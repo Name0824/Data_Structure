@@ -62,7 +62,7 @@ int main(void) {
 			
 			if(LFirst(&list, &nameCard)) {
 				if(!NameCompare(nameCard, name)) {			
-					printf("\n>> %s 님의 정보 입니다.\n\n", nameCard->name);
+					printf("\n>> %s 님의 정보 입니다.\n", nameCard->name);
 					ShowNameCardInfo(nameCard);
 					
 					ok = 1;
@@ -70,7 +70,7 @@ int main(void) {
 				
 				while(LNext(&list, &nameCard)){
 					if(!NameCompare(nameCard, name)) {						
-						printf("\n>> %s 님의 정보 입니다.\n\n", nameCard->name);
+						printf("\n>> %s 님의 정보 입니다.\n", nameCard->name);
 						ShowNameCardInfo(nameCard);
 						
 						ok = 1;
@@ -83,6 +83,7 @@ int main(void) {
 				system("pause");
 				system("cls");
 			} else {
+				printf("\n");
 				system("pause");
 				system("cls");
 			}
