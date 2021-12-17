@@ -62,7 +62,7 @@ int main(void) {
 			
 			if(LFirst(&list, &nameCard)) {
 				if(!NameCompare(nameCard, name)) {			
-					printf("\n>> %s 님의 정보 입니다.\n\n", nameCard->name);
+					printf("\n>> %s 님의 정보 입니다.\n", nameCard->name);
 					ShowNameCardInfo(nameCard);
 					
 					ok = 1;
@@ -70,7 +70,7 @@ int main(void) {
 				
 				while(LNext(&list, &nameCard)){
 					if(!NameCompare(nameCard, name)) {						
-						printf("\n>> %s 님의 정보 입니다.\n\n", nameCard->name);
+						printf("\n>> %s 님의 정보 입니다.\n", nameCard->name);
 						ShowNameCardInfo(nameCard);
 						
 						ok = 1;
@@ -83,6 +83,7 @@ int main(void) {
 				system("pause");
 				system("cls");
 			} else {
+				printf("\n");
 				system("pause");
 				system("cls");
 			}
@@ -160,27 +161,27 @@ int main(void) {
 				system("pause");
 				system("cls");
 			}
+		// 모든 인물 출력
+		} else if(conNum == 5) { 
+			printf("[   PRINT ALL   ]\n\n");
 			
-		} else if(conNum == 5) { // 모든 인물 출력 
-			printf("[   PRINT ALL   ]\n");
+			if(LCount(&list) == 0) {
+				printf(">> 데이터가 존재하지 않습니다.\n");
+				printf("\n");
+				system("pause");
+				system("cls");
+				continue;
+			}
+			
 			if(LFirst(&list, &nameCard)) {
 				ShowNameCardInfo(nameCard);
-				ok = 1;
 		
 				while(LNext(&list, &nameCard)){
 					ShowNameCardInfo(nameCard);
-					ok = 1;
 				}
 			printf("\n");
-			}
-			
-			if(ok == -1) {
-				printf("\n>> 데이터가 존재하지 않습니다.\n\n");
-				system("pause");
-				system("cls");
-			} else {
-				system("pause");
-				system("cls");
+			system("pause");
+			system("cls");
 			}
 		// 데이터 수 반환 
 		} else if(conNum == 6) { 
@@ -196,13 +197,13 @@ int main(void) {
 		// 잘못된 번호 입력 할 경우 
 		} else {
 			printf(">> 잘못된 번호입니다, 다시 입력해주세요. \n\n");
-			
-			// 표준 입력 버퍼에 저장된 모든 문자를 제거합니다. 
-			rewind(stdin);
-			
-			system("pause"); // 멈추기 
+
+			system("pause");
 			system("cls");
 		}
+		
+		// 표준 입력 버퍼에 저장된 모든 문자를 제거합니다. 
+		rewind(stdin);
 	}
 	
 	return 0;
