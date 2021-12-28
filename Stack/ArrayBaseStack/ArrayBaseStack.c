@@ -2,18 +2,12 @@
 #include <stdlib.h>
 #include "ArrayBaseStack.h"
 
-/*
-typedef struct _arraystack {
-	Data stackArr[STACK_LEN];	// 데이터 넣을 배열 공간 
-	int topIndex;				// 최상단 인덱스 
-} ArrayStack;
-*/
-
-// 초기화, empty 확인, Full 확인 
+// 초기화 
 void StackInit(Stack * pstack) {
 	pstack->topIndex = -1;
 }
 
+// empty 확인 
 int SIsEmpty(Stack * pstack) {
 	if(pstack->topIndex == -1) {
 		return TRUE;
@@ -22,6 +16,7 @@ int SIsEmpty(Stack * pstack) {
 	}
 }
 
+// Full 확인 
 int SIsFull(Stack * pstack) {
 	// 0~99 는 100개 이므로 Stack_Len 부분을 1 빼줘서 99로 맞춘다. 
 	if(pstack->topIndex >= STACK_LEN - 1) {
@@ -31,10 +26,10 @@ int SIsFull(Stack * pstack) {
 	}
 }
 
-// 데이터 추가, 삭제 
+// 데이터 추가 
 void SPush(Stack * pstack, Data data) {
 	if(SIsFull(pstack)) {
-		printf("Stack OverFlow!");
+		printf("더이상 저장할 수 없습니다!");
 		exit(-1);	// 프로세스 종료, return 이랑 비슷함 
 	}
 	
@@ -42,9 +37,10 @@ void SPush(Stack * pstack, Data data) {
 	pstack->stackArr[pstack->topIndex] = data;
 }
 
+// 데이터 삭제 후 반환 
 Data SPop(Stack * pstack) {
 	if(SIsEmpty(pstack)) {
-		printf("Data Is Not Found!");
+		printf("데이터를 찾을 수 없습니다!");
 		exit(-1);
 	}
 	
@@ -54,10 +50,10 @@ Data SPop(Stack * pstack) {
 	return pstack->stackArr[rIdx];
 }
 
-// 스택 최상단 데이터 확인 
+// 최상단 데이터 확인 
 Data SPeek(Stack * pstack) {
 	if(SIsEmpty(pstack)) {
-		printf("Data Is Not Found!");
+		printf("데이터를 찾을 수 없습니다!");
 		exit(-1);
 	}
 	

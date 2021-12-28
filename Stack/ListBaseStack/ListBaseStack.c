@@ -28,7 +28,7 @@ void SPush(Stack * pstack, Data data) {
 // 값 제거 및 반환 
 Data SPop(Stack * pstack) {
 	if(SIsEmpty(pstack)) {
-		printf("공간이 비어있습니다!");
+		printf("데이터를 찾을 수 없습니다!");
 		exit(-1);
 	}
 	
@@ -45,7 +45,7 @@ Data SPop(Stack * pstack) {
 // 마지막 값 반환 
 Data SPeek(Stack * pstack) {
 	if(SIsEmpty(pstack)) {
-		printf("공간이 비어있습니다!");
+		printf("데이터를 찾을 수 없습니다!");
 		exit(-1);
 	}
 	
