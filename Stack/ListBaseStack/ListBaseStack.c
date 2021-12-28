@@ -1,22 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ListBaseStack.h"
-/*
-typedef struct _node {
-	Data data;
-	struct _node * next;
-} Node; 
 
-typedef struct _listStack {
-	Node * head;
-} ListStack;
-*/
-
-// 초기화, Empty 확인 
+// 초기화 
 void StackInit(Stack * pstack) {
 	pstack->head = NULL;
 }
 
+// 비어있는지 확인 
 int SIsEmpty(Stack * pstack) {
 	if(pstack->head == NULL) {
 		return TRUE;
@@ -25,19 +16,19 @@ int SIsEmpty(Stack * pstack) {
 	}
 }
 
-// 삽입, 제거 후 반환, 마지막값 반환 
-int SPush(Stack * pstack, Data data) {
+// 삽입 
+void SPush(Stack * pstack, Data data) {
 	Node * newNode = (Node*)malloc(sizeof(Node));
 	newNode->data = data;
 	
 	newNode->next = pstack->head;
 	pstack->head = newNode;
-	
 }
 
-int SPop(Stack * pstack) {
+// 값 제거 및 반환 
+Data SPop(Stack * pstack) {
 	if(SIsEmpty(pstack)) {
-		printf("Stack Memory Error!");
+		printf("공간이 비어있습니다!");
 		exit(-1);
 	}
 	
@@ -51,9 +42,10 @@ int SPop(Stack * pstack) {
 	return rdata;
 }
 
-int SPeek(Stack * pstack) {
+// 마지막 값 반환 
+Data SPeek(Stack * pstack) {
 	if(SIsEmpty(pstack)) {
-		printf("Stack Memory Error!");
+		printf("공간이 비어있습니다!");
 		exit(-1);
 	}
 	
