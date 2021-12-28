@@ -2,52 +2,55 @@
 #include <stdlib.h>
 #include "ListBaseStack.h"
 
-// 초기화 
-void StackInit(Stack * pstack) {
-	pstack->head = NULL;
+void S_Init(Stack * pstack) {
+	pstack->top = NULL;
+	pstack->num = 0;
 }
 
-// 비어있는지 확인 
-int SIsEmpty(Stack * pstack) {
-	if(pstack->head == NULL) {
+int S_Empty(Stack * pstack) {
+	if(pstack->top == NULL) {
 		return TRUE;
 	} else {
 		return FALSE;
 	}
 }
 
-// 삽입 
-void SPush(Stack * pstack, Data data) {
-	Node * newNode = (Node*)malloc(sizeof(Node));
-	newNode->data = data;
+void S_Push(Stack * pstack, Data data) {
+	Node * newStack = (Node*)malloc(sizeof(Node));
+	newStack->data = data;
 	
-	newNode->next = pstack->head;
-	pstack->head = newNode;
+	newStack->next = pstack->top;
+	pstack->top = newStack;
+	
+	pstack->num++;
 }
 
-// 값 제거 및 반환 
-Data SPop(Stack * pstack) {
-	if(SIsEmpty(pstack)) {
-		printf("데이터를 찾을 수 없습니다!");
+Data S_Pop(Stack * pstack) {
+	if(S_Empty(pstack)) {
+		printf("저장된 데이터가 없습니다.");
 		exit(-1);
 	}
 	
-	// 반환 데이터 , 노드 
-	Data rdata = pstack->head->data;
-	Node * rnode = pstack->head;
-
-	pstack->head = pstack->head->next;
-	free(rnode);
+	Data rdata	 = pstack->top->data;	// 반환할 데이터 저장 
+	Node * rnode = pstack->top;			// 삭제할 노드 저장 
 	
-	return rdata;
+	pstack->top = pstack->top->next;	// 삭제하기전 최상단 위치를 다음으로 변경 
+	free(rnode);						// 삭제 
+	
+	pstack->num--;
+	
+	return rdata;						// 데이터 반환 
 }
 
-// 마지막 값 반환 
-Data SPeek(Stack * pstack) {
-	if(SIsEmpty(pstack)) {
-		printf("데이터를 찾을 수 없습니다!");
+Data S_Peek(Stack * pstack) {
+	if(S_Empty(pstack)) {
+		printf("저장된 데이터가 없습니다.");
 		exit(-1);
 	}
 	
-	return pstack->head->data;
+	return pstack->top->data;
+}
+
+int S_Count(Stack * pstack) {
+	return pstack->num;
 }

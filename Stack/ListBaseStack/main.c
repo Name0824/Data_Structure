@@ -4,17 +4,31 @@
 
 int main(void) {
 	Stack stack;
-	StackInit(&stack);
+	S_Init(&stack);
+	Data data;
 	
-	SPush(&stack, 1);
-	SPush(&stack, 2);
-	SPush(&stack, 3);
-	SPush(&stack, 4);
-	SPush(&stack, 5);
+	printf("숫자를 입력해주세요.\n");
+	printf(">> 0을 입력하면 입력이 종료됩니다.\n");
 	
-	while(!SIsEmpty(&stack)) {
-		printf("%d ", SPop(&stack));
+	while(1) {
+		scanf("%d", &data);
+		
+		if(data == 0) {
+			break;
+		}
+		
+		S_Push(&stack, data);
 	}
+	
+	printf("\n>> 출력\n");
+	int text;
+	while(S_Count(&stack) != 1) {
+		text = S_Pop(&stack);
+		printf("%d, ", text);
+	}
+	
+	text = S_Pop(&stack);
+	printf("%d", text);
 	
 	return 0;
 }

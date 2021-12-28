@@ -1,31 +1,33 @@
-#ifndef __LB_STACK_H__
-#define __LB_STACK_H__
+#ifndef __LIST_BASE_STACK_H__
+#define __LIST_BASE_STACK_H__
 
-// 논리값 매크로 정의 
+// 논리값 정의 
 #define TRUE	1
 #define FALSE	0
 
-// 자료형 별칭 정의 
+// DATA 별칭 
 typedef int Data;
 
 // 노드 
 typedef struct _node {
 	Data data;
 	struct _node * next;
-} Node; 
+} Node;
 
-// 리스트 스택 
-typedef struct _listStack {
-	Node * head;
-} ListStack;
+// 리스트 
+typedef struct _stackList {
+	Node * top;
+	int num;
+} StackList;
 
-typedef ListStack Stack;
+typedef StackList Stack;
 
-// 초기화, Empty 확인, 삽입, 제거 후 반환, 마지막값 반환
-void StackInit(Stack * pstack);
-int SIsEmpty(Stack * pstack);
-void SPush(Stack * pstack, Data data);
-Data SPop(Stack * pstack);
-Data SPeek(Stack * pstack);
+void S_Init(Stack * pstack);				// 초기화 
+int S_Empty(Stack * pstack);				// 비어있는지 확인 
+void S_Push(Stack * pstack, Data data);		// 데이터 삽입 
+Data S_Pop(Stack * pstack);					// 데이터 삭제 후 데이터 반환 
+Data S_Peek(Stack * pstack);				// 마지막 데이터 반환 
+int S_Count(Stack * pstack);				// 갯수 출력 
 
 #endif
+
