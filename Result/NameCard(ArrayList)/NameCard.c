@@ -26,3 +26,6 @@ int NameCompare(NameCard * pcard, char * name) {
 void ChangePhoneNum(NameCard * pcard, char * phone) {
 	strcpy(pcard->phone, phone);
 }
+
+
+

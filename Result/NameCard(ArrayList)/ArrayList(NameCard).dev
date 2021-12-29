@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=Main.c
+FileName=main.c
 CompileCpp=0
 Folder=
 Compile=1

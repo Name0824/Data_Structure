@@ -21,5 +21,4 @@ int NameCompare(NameCard * pcard, char * name);
 //전화번호 정보를 변경
 void ChangePhoneNum(NameCard * pcard, char * phone);
 
-
 #endif
